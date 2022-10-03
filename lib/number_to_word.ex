@@ -35,7 +35,7 @@ defmodule NumberToWord do
     90 => "ninety"
   }
 
-  @large_numbers %{
+  @powers_of_ten %{
     3 => "thousand",
     6 => "million",
     9 => "billion",
@@ -107,7 +107,7 @@ defmodule NumberToWord do
     format(hundreds, " hundred", separator(remainder), remainder)
   end
 
-  @large_numbers
+  @powers_of_ten
   |> Map.values()
   |> Enum.zip(Stream.unfold(1000, fn acc -> {acc, acc * 1000} end))
   |> Enum.each(fn {suffix, m} ->
